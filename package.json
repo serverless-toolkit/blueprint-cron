@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "name": "@serverless-toolkit/lambda-cron",
+  "version": "0.0.1",
+  "description": "Lambda execution using a CRON event.",
+  "scripts": {
+    "deploy": "cdk deploy --context stackname=lambda-cron-example",
+    "destroy": "cdk destroy --context stackname=lambda-cron-example --force",
+    "clear": "rimraf cdk.out"
+  },
+  "devDependencies": {
+    "esbuild": "0.15.10",
+    "ts-node": "10.9.1",
+    "rimraf": "3.0.2",
+    "@types/node": "16.11.63",
+    "@types/aws-lambda": "8.10.106",
+    "aws-cdk": "2.44.0",
+    "aws-cdk-lib": "2.44.0",
+    "aws-lambda": "1.0.7"
+  }
+}
