@@ -6,6 +6,7 @@ import {
   Duration,
   aws_lambda,
   StackProps,
+  aws_logs,
 } from "aws-cdk-lib";
 import { Construct } from "constructs";
 
@@ -22,6 +23,7 @@ class LambdaCronStack extends Stack {
         handler: "handler",
         awsSdkConnectionReuse: true,
         runtime: aws_lambda.Runtime.NODEJS_16_X,
+        logRetention: aws_logs.RetentionDays.ONE_WEEK,                
       }
     );
 
@@ -36,6 +38,10 @@ class LambdaCronStack extends Stack {
 
     new CfnOutput(this, "lambda-url", {
       value: fnUrl.url,
+    });
+
+    new CfnOutput(this, "lambda-log-group-name", {
+      value: handler.logGroup.logGroupName,
     });
   }
 }
